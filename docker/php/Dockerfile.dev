@@ -1,0 +1,22 @@
+# Используем PHP 8.3 с FPM
+FROM php:8.3-fpm
+
+# Устанавливаем расширения PHP
+RUN apt-get update && apt-get install -y \
+    libpq-dev libpng-dev libjpeg-dev libfreetype6-dev zip unzip git \
+    && docker-php-ext-install pdo pdo_mysql gd
+
+# Устанавливаем Xdebug (только для разработки)
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+# Устанавливаем Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Указываем рабочую директорию
+WORKDIR /var/www/html
+
+# Настройки Xdebug
+COPY ./docker/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
+# Запускаем PHP-FPM
+CMD ["php-fpm"]
