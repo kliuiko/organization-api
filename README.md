@@ -1,3 +1,7 @@
+## Выполнение тестового задания для Микрокредитная Компания Небус
+
+Ссылка на описание функциональных требований тестового задания: [docs.google.com](https://docs.google.com/document/d/1OhQ6cdah4E-fbvkgI6FE5FnWfOUHYluyN9uxpjJ_fX8/edit?usp=sharing)
+
 # Установка
 
 ### Копирование файла `.env.example` в `.env`
