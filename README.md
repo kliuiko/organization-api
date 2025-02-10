@@ -21,7 +21,7 @@ php artisan key:generate
 
 ### Запуск контейнеров Docker (используется `docker-compose.dev.yml`)
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Создание схемы базы данных и наполнение тестовыми данными
