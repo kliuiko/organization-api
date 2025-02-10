@@ -1,0 +1,795 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API документация",
+        "description": "Описание API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/": {},
+        "/api/v1/organizations/": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Получение всех организаций",
+                "operationId": "b5baa1d2fe8cb8924a757e83f2f3a39c",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Baumbach, Mitchell and Walker"
+                                                    },
+                                                    "building": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 1
+                                                            },
+                                                            "address": {
+                                                                "type": "string",
+                                                                "example": "259 Blanche Ford\\nPort Ephraim, MN 75163"
+                                                            },
+                                                            "latitude": {
+                                                                "type": "string",
+                                                                "example": "-53.7149580"
+                                                            },
+                                                            "longitude": {
+                                                                "type": "string",
+                                                                "example": "140.4706130"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "phones": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "+1-760-833-6745"
+                                                        }
+                                                    },
+                                                    "activities": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 8
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Аксессуары"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/organizations/{id}": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Получение организации по ID",
+                "operationId": "cf108afa69aa8de272788f058d3a478b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Baumbach, Mitchell and Walker"
+                                                },
+                                                "building": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": 1
+                                                        },
+                                                        "address": {
+                                                            "type": "string",
+                                                            "example": "259 Blanche Ford\\nPort Ephraim, MN 75163"
+                                                        },
+                                                        "latitude": {
+                                                            "type": "string",
+                                                            "example": "-53.7149580"
+                                                        },
+                                                        "longitude": {
+                                                            "type": "string",
+                                                            "example": "140.4706130"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "phones": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "+1-760-833-6745"
+                                                    }
+                                                },
+                                                "activities": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 8
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Аксессуары"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/organizations/by-building/{id}": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Получение всех организаций в здании с ID",
+                "operationId": "f078d65f8e34dad0ac6e1652b4b17a1d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Baumbach, Mitchell and Walker"
+                                                    },
+                                                    "building": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 1
+                                                            },
+                                                            "address": {
+                                                                "type": "string",
+                                                                "example": "259 Blanche Ford\\nPort Ephraim, MN 75163"
+                                                            },
+                                                            "latitude": {
+                                                                "type": "string",
+                                                                "example": "-53.7149580"
+                                                            },
+                                                            "longitude": {
+                                                                "type": "string",
+                                                                "example": "140.4706130"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "phones": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "+1-760-833-6745"
+                                                        }
+                                                    },
+                                                    "activities": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 8
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Аксессуары"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/organizations/by-activity/{id}": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Получение всех организаций с видом деятельности ID",
+                "operationId": "e54985cc1d6ff01e66419a8fd16f9f01",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Baumbach, Mitchell and Walker"
+                                                    },
+                                                    "building": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 1
+                                                            },
+                                                            "address": {
+                                                                "type": "string",
+                                                                "example": "259 Blanche Ford\\nPort Ephraim, MN 75163"
+                                                            },
+                                                            "latitude": {
+                                                                "type": "string",
+                                                                "example": "-53.7149580"
+                                                            },
+                                                            "longitude": {
+                                                                "type": "string",
+                                                                "example": "140.4706130"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "phones": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "+1-760-833-6745"
+                                                        }
+                                                    },
+                                                    "activities": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 8
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Аксессуары"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/organizations/by-radius": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Поиск организаций в заданном радиусе",
+                "operationId": "b3315fe475a5103ad266ae0b3bb5db66",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Широта (-90 до 90)",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "maximum": 90,
+                            "minimum": -90,
+                            "example": 55.751244
+                        }
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Долгота (-180 до 180)",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "maximum": 180,
+                            "minimum": -180,
+                            "example": 37.618423
+                        }
+                    },
+                    {
+                        "name": "radius",
+                        "in": "query",
+                        "description": "Радиус поиска (мин. 0.1)",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "minimum": 0.1,
+                            "example": 10.5
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Baumbach, Mitchell and Walker"
+                                                    },
+                                                    "building": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 1
+                                                            },
+                                                            "address": {
+                                                                "type": "string",
+                                                                "example": "259 Blanche Ford\\nPort Ephraim, MN 75163"
+                                                            },
+                                                            "latitude": {
+                                                                "type": "string",
+                                                                "example": "-53.7149580"
+                                                            },
+                                                            "longitude": {
+                                                                "type": "string",
+                                                                "example": "140.4706130"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "phones": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "+1-760-833-6745"
+                                                        }
+                                                    },
+                                                    "activities": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 8
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Аксессуары"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/organizations/by-bounds": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Поиск организаций в заданной прямоугольной области",
+                "operationId": "5296101b5b0570426335cfe74a0cd651",
+                "parameters": [
+                    {
+                        "name": "min_lat",
+                        "in": "query",
+                        "description": "Минимальная широта (-90 до 90)",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "maximum": 90,
+                            "minimum": -90,
+                            "example": -50
+                        }
+                    },
+                    {
+                        "name": "max_lat",
+                        "in": "query",
+                        "description": "Максимальная широта (-90 до 90, должна быть >= min_lat)",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "maximum": 90,
+                            "minimum": -90,
+                            "example": 50
+                        }
+                    },
+                    {
+                        "name": "min_lng",
+                        "in": "query",
+                        "description": "Минимальная долгота (-180 до 180)",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "maximum": 180,
+                            "minimum": -180,
+                            "example": -100
+                        }
+                    },
+                    {
+                        "name": "max_lng",
+                        "in": "query",
+                        "description": "Максимальная долгота (-180 до 180, должна быть >= min_lng)",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "maximum": 180,
+                            "minimum": -180,
+                            "example": 100
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Baumbach, Mitchell and Walker"
+                                                    },
+                                                    "building": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 1
+                                                            },
+                                                            "address": {
+                                                                "type": "string",
+                                                                "example": "259 Blanche Ford\\nPort Ephraim, MN 75163"
+                                                            },
+                                                            "latitude": {
+                                                                "type": "string",
+                                                                "example": "-53.7149580"
+                                                            },
+                                                            "longitude": {
+                                                                "type": "string",
+                                                                "example": "140.4706130"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "phones": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "+1-760-833-6745"
+                                                        }
+                                                    },
+                                                    "activities": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 8
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Аксессуары"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/organizations/search": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Поиск организаций по названию, деятельности или адресу",
+                "operationId": "2b1570443ca181caae067fed255f36cf",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Название организации",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "Baumbach, Mitchell and Walker"
+                        }
+                    },
+                    {
+                        "name": "activity",
+                        "in": "query",
+                        "description": "Название деятельности",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "Аксессуары"
+                        }
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "Адрес организации",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "259 Blanche Ford Port Ephraim, MN 75163"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Baumbach, Mitchell and Walker"
+                                                    },
+                                                    "building": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer",
+                                                                "example": 1
+                                                            },
+                                                            "address": {
+                                                                "type": "string",
+                                                                "example": "259 Blanche Ford\\nPort Ephraim, MN 75163"
+                                                            },
+                                                            "latitude": {
+                                                                "type": "string",
+                                                                "example": "-53.7149580"
+                                                            },
+                                                            "longitude": {
+                                                                "type": "string",
+                                                                "example": "140.4706130"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "phones": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "example": "+1-760-833-6745"
+                                                        }
+                                                    },
+                                                    "activities": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 8
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "Аксессуары"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKeyAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiKeyAuth": {
+                "type": "apiKey",
+                "name": "X-API-KEY",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Organizations",
+            "description": "Organizations"
+        }
+    ]
+}
